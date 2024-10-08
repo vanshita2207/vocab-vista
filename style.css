@@ -1,3 +1,115 @@
-body{
-    background-color: rgb(195, 240, 117);
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    margin-bottom: 5%;
+    background-size:cover; /* Cover the entire background */
+    background-repeat: no-repeat;
+    background-image: url(/background3.jpg);
+}
+.login-container {
+    background-color:transparent;
+    align-content: center;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgb(19, 18, 18);
+    width: 350px;
+    text-align: center;
+    color: rgb(19, 13, 13);
+    margin-top:250px;
+    margin-left: 110px;
+    display: block;
+}
+.logocontainer{
+    color:black;
+    height: 40px;
+}
+.logocontainer img{
+    height: 50px;
+}
+h2 {
+    margin-bottom: 20px;
+    color: rgb(244, 241, 241);
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+    color: white;
+    margin-right: 15px;
+    
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 99%;
+    padding: 10px;
+    border: 1px solid #f1eeee;
+    border-radius: 4px;
+    
+}
+
+.submit {
+    width: 100%;
+    padding: 10px;
+    background-color: #fcfafa;
+    color: rgb(4, 4, 4);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-weight: 400;
+}
+
+button:hover {
+    background-color: #6ecde5;
+}
+
+.registered {
+    margin-top: 15px;
+    color: white;
+}
+
+.registered a {
+    color: #f5f2f2;
+    text-decoration: none;
+}
+p{
+    color: rgb(10, 9, 9);
+}
+.orsignwith{
+    color: rgb(248, 244, 244);
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+}
+.google{
+    border-radius: 50px
+}
+.google img{
+    width: 50px;  
+}
+.apple{
+    border-radius: 50px;
+    width: 65.2px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.apple img{
+    width: 35px;
+    height: 37px;
+}
+.facebook{
+    border-radius: 50px;
+    width:65.2px;
+    height:46.2px
+}
+.facebook img{
+    height: 35px;
+    width:37px;
+
 }

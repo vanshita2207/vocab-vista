@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+</head>
+<style>
+    .rectangle{
+    width: 400px;  
+    height: 800px; 
+    background-color: white; 
+    border: 7px solid #0aae12; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    margin: 40px;
+    text-align: center;
+    font-size:x-large;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #a4077d;
+  }
+  
+  .rect{
+    width: 400px;  
+    height: 800px; 
+    background-color: white; 
+    border: 7px solid #0aae12; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    margin: 40px;
+    text-align: center;
+    font-size: x-large;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #e3264c;
+    margin: 40px auto;
+  }
+  .new{
+    float: right;
+    width:fit-content;
+  }
+  body{
+    background-color: rgb(205, 248, 252);
+   }
+   header{
+    font-weight: bold;
+   }
+  h1{
+    font-size: 100px;
+    font-style: italic;
+    color:black;
+  }
+  .learn{
+    font-size: 80px;
+    font-style: italic;
+    color:rgb(15, 66, 168);
+  }
+  .item{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: inherit;
+    font-family: din-round, sans-serif;
+    font-size: large;
+  }
+  .para{
+    display: flex;
+    justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: inherit;
+    font-family: din-round, sans-serif;
+    font-size: large;
+    text-align: center;
+    align-items: center;
+  }
+  .view{
+    display: flex;
+    justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: inherit;
+    font-family: din-round, sans-serif;
+    text-align: center;
+    align-items: center;
+    font-size: large;
+  }
+  .container{
+    display: flex;
+    float:left;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    justify-content: center;
+    align-content: center;
+  }
+  .text{
+    flex: 1;
+    padding: 20px;
+  }
+  .img{
+    display: block;
+    float:right ;
+    /* width: 500px;
+    margin-bottom: 40px;
+    margin-top: 0cap; */
+    flex:1;
+    max-width: 70%;
+    height:auto
+  }  
+  .img2{
+    display: block;
+    float: left;
+    max-width: 100%;
+    height: auto;
+    flex:1;
+  }
+  .img3{
+    display: block;
+    float: right;
+    max-width: 50%;
+    height: auto;
+    flex: 1;
+  }
+  .head{
+    font-family: sans-serif;
+    font-size: 40px;
+    line-height: normal;
+    color: rgb(90, 12, 235);
+    max-width: 340px;
+    font-weight: 750;
+    text-align: center;
+    align-content: center;
+  }
+  .head2{
+    display:inline;
+    font-family: sans-serif;
+    font-size: 40px;
+    line-height: normal;
+    color: rgb(90, 12, 235);
+    max-width: 340px;
+    font-weight: 750;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+  }
+ 
+  .container2{
+    display: flex;
+    float:right;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    justify-content: space-between;
+    align-content: center;
+  }
+  .image{
+    flex:1;
+    text-align: center;
+  }
+  .section{
+    margin-top: 50px;
+  }
+  .image-left .image{
+    order:-1;
+  }
+  button{
+    width: 50vh;
+    height: 10vh;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: inherit;
+    font-family: din-round, sans-serif;
+    background-color:rgb(129, 213, 255);
+    transition: background-color 0.35;
+    font-weight: bold;
+    border-radius: 10px;
+    text-decoration: none;
+  }
+ 
+  footer {
+            background-color: rgb(205, 248, 252);
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            animation: fadeIn 1s ease;
+        }
+
+        footer p {
+            margin: 10px 0;
+            font-size: 18px;
+            transition: transform 0.3s;
+        }
+
+        footer p:hover {
+            transform: scale(1.1);
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200%;
+            height: 100px;
+            opacity: 0.3;
+            background-repeat: repeat-x;
+            background-size: 50% 100px;
+            background: url("wave.png") repeat-x;
+        }
+
+        .wave1 {
+            background: linear-gradient(to right, url("wave.png"),url("wave.png") 100%);
+            animation: waveAnimation 6s infinite linear;
+        }
+
+        .wave2 {
+            background: linear-gradient(to right,url("wave.png"),url("wave.png") 100%);
+            animation: waveAnimation 8s infinite linear;
+            opacity: 0.3;
+            bottom: 10px; /* Adjust position */
+        }
+
+        .wave3 {
+            background: linear-gradient(to right, url("wave.png"),url("wave.png") 100%);
+            animation: waveAnimation 10s infinite linear;
+            opacity: 0.3;
+            bottom: 20px; /* Adjust position */
+        }
+
+        @keyframes waveAnimation {
+            0% { background-position: 0; }
+            100% { background-position: 1000px; }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+ 
+</style>
+<body>
+    <header>Vocab Vista
+    </header>
+    <hr>
+    <center>
+    <h1>Vocab Vista</h1></center>
+  <div><img class="new" src="main.png"></div>
+  <section class="rectangle">Unlock the magic of words with a sprinkle of laughter and a dash of fun with Vocab Vista!</section><br>
+  <br>
+  <section class="rect">"Discover the beauty of language us—your gateway to fluency!"</section>
+    <br>
+    <br>
+    <br> 
+    <div class="container section image-left">
+      <div class="image">
+        <img class="img2" src="photo.png">
+      </div>
+      <div class="text">
+        <h1 class="head2">Play and Stay Motivated</h1><br>
+        <br>
+        <p class="para">
+          <big> At Vocab Vista, every day is an opportunity to
+            learn something new and exciting. Each lesson here is a new 
+            treasure waiting to be discovered. With our fun lessons,exciting
+              games and quizzes, you'll be able to express yourself while
+                 practicing your new language skills.</big>
+        </p>
+      </div>
+    </div><br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br> 
+    <br>
+    <div class="container">
+      <div class="text">
+        <h1 class="head" style="display: inline; color: #e3264c;" >Learn, Laugh and Explore</h1><br>
+        <br>
+        <p class="item">
+          <big>
+          Who says learning can't be an adventure? 
+    Welcome to Vocab Vista, where learning a new language
+  is just as fun as playing your favorite game coz we've made
+          it super easy and super fun for you
+          </big>
+        </p>
+      </div>
+      <div class="img">
+        <img src="imgg1.png">
+      </div>
+    </div><br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container section image-left">
+      <div class="image">
+        <img src="glbb.png">
+      </div>
+      <div class="text">
+        <h1 class="head2" style="color: #890d8d;">Discover New Worlds</h1><br>
+        <br>
+        <p class="view">
+          <big>
+            Explore cool countries and learn about
+   exciting traditions, yummy foods, and awesome festivals. 
+     It's like taking a mini-vacation around the world!
+          </big>
+        </p>
+      </div>
+      </div><br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <center>
+        <h1 class="learn">Learn Anytime, Anywhere</h1>
+      </center>
+      <center><button><a href="index2.html" style="font-size: larger;">GET STARTED</a></button></center><br>
+      <br><br>
+      <footer>
+          <div class="wave wave1"></div>
+          <div class="wave wave2"></div>
+          <div class="wave wave3"></div>
+          <p>&copy;<b> 2024 Vocab Vista. All rights reserved.</b></p>
+          <p><a href="privacy.html" style="color: rgb(0, 0, 0);"><b>Privacy Policy</b></a> | <a href="terms.html" style="color: rgb(0,0,0);"><b>Terms of Service</b></a></p>
+      </footer>
+</body>
+</html>
