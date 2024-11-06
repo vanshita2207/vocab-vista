@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spanish Ques</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style2.css"/>
+    <link rel="stylesheet" href="css/responsivee.css"/>
+    <style>
+        body {
+            background-image: url(https://i.pinimg.com/originals/33/de/d4/33ded4b1e7b3861e530494cecb456c25.gif);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .question {
+            text-align: center;
+            margin-top: 130px;
+            font-size: 25px;
+            font-family: Georgia, serif;
+        }
+        .answer-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgb(127, 172, 255);
+            margin: 100px 100px 0 0;
+            padding: 60px 0;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-left: 60px;
+        }
+        .continue-button {
+            border-radius: 10px;
+            background-color: rgb(255, 200, 0);
+            color: white;
+            font-family: bold;
+        }
+        .continue-button:hover {
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        .result-message {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav style="margin-top: 80px;">
+        <progress value="90" max="100" style="margin-left: 650px; width: 250px;"></progress>
+    </nav>
+    
+    <p class="question">How do we pronounce phrase  <strong>'WHAT IS YOUR NAME'</strong> in spanish?</p>
+    
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="answer-button" onclick="showResult('correct')">
+                <h5>COMO TE ILLAMAS</h5>
+                <img src="https://www.shutterstock.com/image-vector/my-name-word-white-chalk-600nw-100762891.jpg" style="height: 60px; width: 60px;">
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="answer-button" onclick="showResult('incorrect')">
+                <h5>MUY BIEN</h5>
+                <img src="https://media.istockphoto.com/id/1954623240/vector/folded-human-hands-praying-namaste-thank-you-helping-arm-gesture-vector-illustration-in-hand.jpg?s=612x612&w=0&k=20&c=9L-GznDeM72DGFf6dJOUpHelbe_x1w7Fj38A-VCoKZc=" style="height: 90px; width: 90px;">
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="answer-button" onclick="showResult('incorrect')">
+                <h5>BUENOS NOCHES</h5>
+                <img src="https://media.istockphoto.com/id/1351985254/vector/full-moon-landscape.jpg?s=612x612&w=0&k=20&c=v8RrJ81Wqj3FEMEIm0oQF5HERauDWB73n2EDy01ukOs=" style="height: 80px; width: 80px;">
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="answer-button" onclick="showResult('incorrect')">
+                <h5>BUENOS DIAS</h5>
+                <img src="https://media.istockphoto.com/id/531242144/vector/sunrise-over-green-hills.jpg?s=612x612&w=0&k=20&c=6g3VwxwIqgU0RGZr0t1fRxdYxbzgYEA3hQmvQiAQwXY=" style="height: 80px; width: 80px;">
+            </div>
+        </div>
+    </div>
+    
+    <p class="result-message" id="resultMessage"></p>
+
+    <a href="index14.html" style="margin-left: 50px">
+        <button class="continue-button">PREVIOUS</button>
+    <a href="index16.html" style="margin-left: 1400px">
+        <button class="continue-button">CONTINUE</button>
+    </a>
+
+    <script>
+        function showResult(result) {
+            const messageElement = document.getElementById('resultMessage');
+            if (result === 'correct') {
+                messageElement.textContent = 'Correct! COMO TE ILLAMAS is the right answer.';
+                messageElement.style.color = 'green';
+            } else {
+                messageElement.textContent = 'Incorrect. Try again!';
+                messageElement.style.color = 'red';
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

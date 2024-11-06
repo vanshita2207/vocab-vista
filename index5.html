@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>French</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+    <style>
+        body {
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;        
+        }
+        
+        video { position: absolute;
+            top: 50%;
+            left: 50%;            
+            min-width: 100%;           
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            transform:translateX(-50%) translateY(-50%);
+            background: url(https://elements.envato.com/animated-french-student-concept-CAV5QPT) no-repeat;
+            background-size: cover; }
+        
+        .card {
+            cursor: pointer;
+        }
+        .selected {
+            border: 8px solid green;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+        <h2 class="mb-4" id="question">Question will appear here</h2>
+        <div id="options" class="row justify-content-center">
+            
+        </div>
+        <button class="btn btn-success mt-4" onclick="checkAnswer()">Check</button>
+        <button class="btn btn-primary mt-4" onclick="nextQuestion()">Next</button>
+        <div id="result" class="mt-4"></div>
+        <div class="progress mt-4">
+            <div class="progress-bar" id="timer" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">10s</div>
+        </div>
+    </div>
+    <div class="video-background">
+        <video autoplay muted loop>
+            <source src="video.mp4" type="video/mp4">
+            
+        </video>
+    </div>
+    <script>
+        let questions = [
+        { 
+            question: 'Which one of these is cat?', 
+            options: [
+                { img: 'https://tse1.mm.bing.net/th?id=OIP.RxcqAdzasnQVWF3LrPwVfQHaHa&pid=Api&P=0&h=180', text: 'le garcon', answer: false },
+                { img: 'https://aaah0mnbncqtinas.public.blob.vercel-storage.com/JQK78o7zoO-no-background-elFA74SnymV9fzC1SlljgkPn1Hrk8q.png', text: 'homme', answer: false },
+                { img: 'https://tse3.mm.bing.net/th?id=OIP.HZzWv1oTZI4V8Po4iik52wHaHa&pid=Api&P=0&h=180', text: 'Chat', answer: true }
+            ]
+        },
+        { 
+            question: 'Which one of these is The boy?', 
+            options: [
+                { img: 'https://tse1.mm.bing.net/th?id=OIP.RxcqAdzasnQVWF3LrPwVfQHaHa&pid=Api&P=0&h=180', text: 'le garcon', answer: true },
+                { img: 'https://tse3.mm.bing.net/th?id=OIP.HZzWv1oTZI4V8Po4iik52wHaHa&pid=Api&P=0&h=180', text: 'Chat', answer: false },
+                { img: 'https://aaah0mnbncqtinas.public.blob.vercel-storage.com/JQK78o7zoO-no-background-elFA74SnymV9fzC1SlljgkPn1Hrk8q.png', text: 'homme', answer: false }
+            ]
+        },
+        {
+                question: 'Which one of these is "One"?', 
+                options: [
+                    { img: 'https://tse2.mm.bing.net/th?id=OIP.3s48KwIXszR6SlfklIi1GgHaHa&pid=Api&P=0&h=180', text: 'un', answer: true },
+                    { img: 'https://aaah0mnbncqtinas.public.blob.vercel-storage.com/JQK78o7zoO-no-background-elFA74SnymV9fzC1SlljgkPn1Hrk8q.png', text: 'homme', answer: false },
+                    { img: 'https://tse4.mm.bing.net/th?id=OIP.SZbUSEvU-D2kYOIBbzpS3gHaHa&pid=Api&P=0&h=180', text: 'voiture', answer: false }
+                ]
+            },
+            { 
+                question: 'Which one of these is The man?', 
+                options: [
+                    { img: 'https://tse1.mm.bing.net/th?id=OIP.RxcqAdzasnQVWF3LrPwVfQHaHa&pid=Api&P=0&h=180', text: 'le garcon', answer: false },
+                    { img: 'https://aaah0mnbncqtinas.public.blob.vercel-storage.com/JQK78o7zoO-no-background-elFA74SnymV9fzC1SlljgkPn1Hrk8q.png', text: 'homme', answer: true },
+                    { img: 'https://tse3.mm.bing.net/th?id=OIP.4bm97IcJx-ziGSVRRntmwQHaHa&pid=Api&P=0&h=180', text: 'Chien', answer: false }
+                ]
+            },
+            { 
+                question: 'Which one of these is And?', 
+                options: [
+                    { img: 'https://tse1.mm.bing.net/th?id=OIP.645LzpS2wQkOloqVnKRbKQHaEK&pid=Api&P=0&h=180', text: 'Ou', answer: false },
+                    { img: 'https://tse3.mm.bing.net/th?id=OIP.29t331niPXPKNb4ParB_AwHaE8&pid=Api&P=0&h=180', text: 'et', answer: true },
+                    { img: 'https://tse4.mm.bing.net/th?id=OIP.phSMVI5QzYPR7wwLjqLf_QHaES&pid=Api&P=0&h=180', text: 'mais', answer: false }
+                ]
+            },
+            { 
+                question: 'How do you say Hello?', 
+                options: [
+                    { img: 'https://tse1.mm.bing.net/th?id=OIP.vMjF2NNvPoNQ1nnPrcLyXAHaEw&pid=Api&P=0&h=180', text: 'Bonjour', answer: true },
+                    { img: 'https://tse4.mm.bing.net/th?id=OIP.Vv-AX2TSQBLJ5RFNMUmpSwHaE7&pid=Api&P=0&h=180', text: 'au revoir', answer: false },
+                    { img: 'https://tse2.mm.bing.net/th?id=OIP.2LCyDTSH_2rLXRRFysQ_wQHaEw&pid=Api&P=0&h=180', text: 'S \'il te plait', answer: false }
+                ]
+            },
+            {   question: 'Which one of these is apple?',
+                options:  [
+                    { img: 'https://tse4.mm.bing.net/th?id=OIP.KKCfF04QiGjWoZSK4jl-IQHaHa&pid=Api&P=0&h=180',text:"pomme" ,answer: true },
+                    { img: 'https://tse4.mm.bing.net/th?id=OIP.cFJA6HvKRZreOa1e_5MA2wHaHa&pid=Api&P=0&h=180',text: 'mangue', answer: false },
+                    { img: 'https://tse3.mm.bing.net/th?id=OIP.2IHgUgxSsiMosTMeUrEjSgHaHa&pid=Api&P=0&h=180',text:'banane', answer: false }
+                ]
+            },
+            {   question: 'which of these means Thank You?',
+                options:  [
+                    { img: 'https://tse1.mm.bing.net/th?id=OIP.uNoJ8wXtJ-asBCGpOnTy5AHaE8&pid=Api&P=0&h=180',text:'merci', answer: true },
+                    { img: 'https://tse2.mm.bing.net/th?id=OIP.qWCUT7y1R_FKVfyD31KdTAHaEK&pid=Api&P=0&h=180',text: 'bienvenue', answer: false },
+                    { img: 'https://tse1.mm.bing.net/th?id=OIP.vMjF2NNvPoNQ1nnPrcLyXAHaEw&pid=Api&P=0&h=180',text:'bonjour', answer: false }
+                ]
+            },
+            {   question: 'which of these is House?',
+                options:  [
+                    { img: 'https://tse4.mm.bing.net/th?id=OIP.hYfG7o0m_Lm9jWaFg85JvgHaH5&pid=Api&P=0&h=180',text: 'maison', answer: true },
+                    { img: 'https://tse3.mm.bing.net/th?id=OIP.S8aD_o_sG3XM-LRpwIoeqQAAAA&pid=Api&P=0&h=180',text: 'ecole', answer: false },
+                    { img: 'https://tse1.mm.bing.net/th?id=OIP.htEO1ZGj7WSI6iBdcuxOggHaHa&pid=Api&P=0&h=180',text: 'hopital', answer: false }
+                ]
+            },
+            {   question: 'which of these means Water?',
+                options:  [
+                    { img: 'https://tse1.mm.bing.net/th?id=OIP.efU36rQU8Fivc2C6soVhgAHaHa&pid=Api&P=0&h=180',text:'eau', answer: true },
+                    { img: 'https://tse2.mm.bing.net/th?id=OIP.vF8d3BD6RJvpDb1pTYVTEAHaHa&pid=Api&P=0&h=180',text: 'boisson froide', answer: false },
+                    { img: 'https://tse4.mm.bing.net/th?id=OIP.aj4mMcau1TzDNvzEOu3d_gAAAA&pid=Api&P=0&h=180',text: 'aucun de ceux-ci' ,answer: false }
+                ]
+            },
+            // or jada options krne hai tph yha kr sakte haii   !!
+        ];
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let timerInterval;
+
+        function loadQuestion() {
+            if (currentQuestionIndex < questions.length) {
+                const questionData = questions[currentQuestionIndex];
+                document.getElementById('question').innerText = questionData.question;
+                const optionsDiv = document.getElementById('options');
+                optionsDiv.innerHTML = '';
+                questionData.options.forEach(option => {
+                    const optionCard = document.createElement('div');
+                    optionCard.classList.add('col-md-2', 'card', 'm-2');
+                    optionCard.onclick = () => selectOption(optionCard, option.answer);
+                    optionCard.innerHTML = `
+                        <div class="card-body">
+                            <img src="${option.img}" class="img-fluid">
+                            <p class="mt-2">${option.text}</p>
+                        </div>`;
+                    optionsDiv.appendChild(optionCard);
+                });
+                startTimer();
+            } else {
+                document.getElementById('question').innerText = 'Quiz Finished! Your score is ' + score;
+                document.getElementById('options').innerHTML = '';
+                document.querySelector('.btn-success').style.display = 'none';
+                document.querySelector('.btn-primary').style.display = 'none';
+            }
+        }
+
+        function selectOption(element, isCorrect) {
+            document.querySelectorAll('.card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            selectedOption = isCorrect;
+        }
+
+        function checkAnswer() {
+            const resultDiv = document.getElementById('result');
+            if (selectedOption) {
+                resultDiv.innerHTML = 'Correct! Well done! 🎉';
+                resultDiv.style.color = 'green';
+                score += 10;
+            } else {
+                resultDiv.innerHTML = 'Incorrect answer Try again! 😊';
+                resultDiv.style.color = 'red';
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            document.getElementById('result').innerHTML = '';
+            loadQuestion();
+        }
+
+        function startTimer() {
+            clearInterval(timerInterval);
+            let timeLeft = 10;
+            const timerDiv = document.getElementById('timer');
+            timerDiv.style.width = '100%';
+            timerDiv.innerText = timeLeft + 's';
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                timerDiv.style.width = (timeLeft / 10 * 100) + '%';
+                timerDiv.innerText = timeLeft + 's';
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    nextQuestion();
+                }
+            }, 1000);
+        }
+
+        window.onload = loadQuestion;
+    </script>
+</body>
+</html>

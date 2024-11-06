@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spanish Ques</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style2.css"/>
+    <link rel="stylesheet" href="css/responsivee.css"/>
+    <style>
+        body {
+            background-image: url(https://i.pinimg.com/originals/33/de/d4/33ded4b1e7b3861e530494cecb456c25.gif);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .question {
+            text-align: center;
+            margin-top: 130px;
+            font-size: 25px;
+            font-family: Georgia, serif;
+        }
+        .answer-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgb(127, 172, 255);
+            margin: 100px 100px 0 0;
+            padding: 60px 0;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-left: 60px;
+        }
+        .continue-button {
+            border-radius: 10px;
+            background-color: rgb(255, 200, 0);
+            color: white;
+            font-family: bold;
+        }
+        .continue-button:hover {
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        .result-message {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav style="margin-top: 80px;">
+        <progress value="0" max="100" style="margin-left: 650px; width: 250px;"></progress>
+    </nav>
+    
+    <p class="question">How to say <strong>'HELLO'</strong> in spanish?</p>
+    
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="answer-button" onclick="showResult('correct')">
+                <h5>HOLA</h5>
+                <img src="https://media.istockphoto.com/id/1296242195/vector/waving-hand-cartoon-moving-human-hand-gesture-of-greeting-or-goodbye-negative-or.jpg?s=612x612&w=0&k=20&c=meOV3G73ftKbRaPxVTAuGVXeG7IToTBg3W4PcPxQDYg=" style="height: 60px; width: 60px;">
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="answer-button" onclick="showResult('incorrect')">
+                <h5>LA COMIDA</h5>
+                <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTAyL3Jhd3BpeGVsX29mZmljZV8zMF9hX2RyYXdpbmdfb2ZfYV9idXJnZXJfaW5fdGhlX3N0eWxlX29mX2JvbGRfb181NWI2OWI5ZC02YjQ2LTRkZDctYWFlMy0wMDkzOTUwODc5ZDdfMS5wbmc.png"  style="height: 90px; width: 90px;">
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="answer-button" onclick="showResult('incorrect')">
+                <h5>BUENOS DIAS</h5>
+                <img src="https://media.istockphoto.com/id/531242144/vector/sunrise-over-green-hills.jpg?s=612x612&w=0&k=20&c=6g3VwxwIqgU0RGZr0t1fRxdYxbzgYEA3hQmvQiAQwXY=" style="height: 80px; width: 80px;">
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="answer-button" onclick="showResult('incorrect')">
+                <h5>BIEN</h5>
+                <img src="https://media.istockphoto.com/id/1337183322/vector/fingers-for-teaching-early-counting-in-children-education-stock-illustration-hands-body.jpg?s=612x612&w=0&k=20&c=ofTEnS98LMy0_z3vwlujdw-aTZZmFpWwoAOgynPyDN0="  style="height: 80px; width: 80px;">
+            </div>
+        </div>
+    </div>
+    
+    <p class="result-message" id="resultMessage"></p>
+
+
+   
+    <a href="index7.html" style="margin-left: 1400px">
+        <button class="continue-button">CONTINUE</button>
+    </a>
+
+    <script>
+      
+        function showResult(result) {
+            const messageElement = document.getElementById('resultMessage');
+            const messageElement2 = document.getElementById('score1');
+            const messageElement3 = document.getElementById('score2');
+
+            if (result === 'correct') {
+                messageElement.textContent = 'Correct! HOLA is the right answer.';
+                messageElement.style.color = 'green';
+               
+               
+            } else {
+                messageElement.textContent = 'Incorrect. Try again!';
+                messageElement.style.color = 'red';
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

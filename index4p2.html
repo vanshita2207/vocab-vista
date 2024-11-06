@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fullscreen Video Background</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+
+    /* Fullscreen Video Background */
+    .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1; /* Places video behind other content */
+    }
+
+    /* Content Styling */
+    .content {
+      position: relative;
+      z-index: 1;
+      color: #fff;
+      text-align: center;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    button{
+        width: 50vh;
+    height: 10vh;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: inherit;
+    font-family: din-round, sans-serif;
+    background:linear-gradient(135deg, #2575fc, #1b1c2b);
+    transition: background-color 0.35;
+    font-weight: bold;
+    border-radius: 10px;
+    text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Local Video Background -->
+  <video class="video-background" autoplay muted loop>
+    <source src="background.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Content on top of the video -->
+  <div class="container content">
+    <!-- <h1>Your Content Here</h1>
+    <p>Overlay text or other elements can be added here.</p> -->
+    
+   <center><button class="btn btn-primary"><a href="index4.html" style="font-size: larger; color: aliceblue; text-decoration: none;">Get Started</a></button></center>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
