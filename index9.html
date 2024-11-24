@@ -1,108 +1,217 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spanish Ques</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style2.css"/>
-    <link rel="stylesheet" href="css/responsivee.css"/>
+    <title>dutch</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
     <style>
         body {
-            background-image: url(https://i.pinimg.com/originals/33/de/d4/33ded4b1e7b3861e530494cecb456c25.gif);
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        .question {
-            text-align: center;
-            margin-top: 130px;
-            font-size: 25px;
-            font-family: Georgia, serif;
-        }
-        .answer-button {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: rgb(127, 172, 255);
-            margin: 100px 100px 0 0;
-            padding: 60px 0;
-            border-radius: 6px;
+            justify-content: center;
+            align-items: center;  
+            height: 100vh;
+            margin: 0; 
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-image: url(germanbackground.webp);
+        }
+        .col-md-2.card {
+           background-color: transparent;
+        }
+        .col-md-2.card:hover{
+            background-color: #ff9e8d;
+        }
+        .card {
             cursor: pointer;
-            margin-left: 60px;
         }
-        .continue-button {
-            border-radius: 10px;
-            background-color: rgb(255, 200, 0);
-            color: white;
-            font-family: bold;
+        .selected {
+            border: 2px solid #f9fafa;
         }
-        .continue-button:hover {
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-        }
-        .result-message {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 20px;
-            font-weight: bold;
+        .mb-4 {
+            color: #D4F6FF;
         }
     </style>
 </head>
 <body>
-    <nav style="margin-top: 80px;">
-        <progress value="30" max="100" style="margin-left: 650px; width: 250px;"></progress>
-    </nav>
-    
-    <p class="question">How do you pronounce <strong>'THANK YOU'</strong> in spanish?</p>
-    
-    <div class="row">
-        <div class="col-lg-3">
-            <div class="answer-button" onclick="showResult('correct')">
-                <h5>GRACIAS</h5>
-                <img src="https://www.shutterstock.com/shutterstock/videos/1098272249/thumb/7.jpg?ip=x480" style="height: 60px; width: 60px;">
-            </div>
+    <div class="container text-center">
+        <h2 class="mb-4" id="question">Question will appear here</h2>
+        <div id="options" class="row justify-content-center">
+            <!-- Options will be populated dynamically -->
         </div>
-        <div class="col-lg-3">
-            <div class="answer-button" onclick="showResult('incorrect')">
-                <h5>BIEN</h5>
-                <img src="https://media.istockphoto.com/id/1337183322/vector/fingers-for-teaching-early-counting-in-children-education-stock-illustration-hands-body.jpg?s=612x612&w=0&k=20&c=ofTEnS98LMy0_z3vwlujdw-aTZZmFpWwoAOgynPyDN0=" alt="Mother" style="height: 90px; width: 90px;">
-            </div>
-        </div>
-        <div class="col-lg-3">
-            <div class="answer-button" onclick="showResult('incorrect')">
-                <h5>ADIOS</h5>
-                <img src="https://cdn-icons-gif.flaticon.com/10246/10246772.gif" style="height: 80px; width: 80px;">
-            </div>
-        </div>
-        <div class="col-lg-3">
-            <div class="answer-button" onclick="showResult('incorrect')">
-                <h5>LA COMIDA</h5>
-                <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTAyL3Jhd3BpeGVsX29mZmljZV8zMF9hX2RyYXdpbmdfb2ZfYV9idXJnZXJfaW5fdGhlX3N0eWxlX29mX2JvbGRfb181NWI2OWI5ZC02YjQ2LTRkZDctYWFlMy0wMDkzOTUwODc5ZDdfMS5wbmc.png" alt="Sister" style="height: 80px; width: 80px;">
-            </div>
+        <button class="btn btn-primary mt-4" onclick="nextQuestion()">Next</button>
+        <div id="result" class="mt-4"></div>
+        <div class="progress mt-4">
+            <div class="progress-bar" id="timer" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">15s</div>
         </div>
     </div>
-    
-    <p class="result-message" id="resultMessage"></p>
-
-    <a href="index8.html" style="margin-left: 50px">
-        <button class="continue-button">PREVIOUS</button>
-    </a>
-    <a href="index10.html" style="margin-left: 1400px">
-        <button class="continue-button">CONTINUE</button>
-    </a>
-
+   
     <script>
-        function showResult(result) {
-            const messageElement = document.getElementById('resultMessage');
-            if (result === 'correct') {
-                messageElement.textContent = 'Correct! GRACIAS is the right answer.';
-                messageElement.style.color = 'green';
+        let questions = [
+            {   
+                question: 'Which of these is "girl"?',
+                options:  [
+                    { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/a443582c1eb03f3fcebfff4febdba3e4', text: 'meisje', answer: true },
+                    { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/52275a140b3fb918b49449a08283ec80', text: 'vrouwen', answer: false },
+                    { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/d6508c5ea6ebcb4859df33c80acd8d8c', text: 'de jongen', answer: false }
+                ]
+            },
+            { 
+                question: 'Which one of these is "Coffee"?', 
+                options: [
+                    { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/18a521f1507cb86689faa5b2e8277703', text: 'thee', answer: false },
+                    { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/6fd84b8a838c43c4a84b44b08b10177e', text: 'het café', answer: true },
+                    { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/dd6539160d13378bd15c527d27f1464a', text: 'het sap', answer: false }
+                ]
+            },
+            { 
+                question: 'Which one of these is "cat"?', 
+                options: [
+                    { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/d6508c5ea6ebcb4859df33c80acd8d8c', text: 'de jongen', answer: false },
+                    { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/b40a713e2c973cb54c3c5bb67ef19af4', text: 'de man', answer: false },
+                    { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/9aa862ebf2f8636383e54ce23d340db9', text: 'de kat', answer: true }
+                ]
+            },
+            { 
+                question: 'Which one of these is "The boy"?', 
+                options: [
+                    { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/d6508c5ea6ebcb4859df33c80acd8d8c', text: 'de jongen', answer: true },
+                    { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/9aa862ebf2f8636383e54ce23d340db9', text: 'le Chat', answer: false },
+                    { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/b40a713e2c973cb54c3c5bb67ef19af4', text: 'de man', answer: false }
+                ]
+            },
+            {
+                    question: 'Which one of these is "One"?', 
+                    options: [
+                        { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/4be10d03a4c6ac4078b6be0df2eb5247', text: 'A', answer: true },
+                        { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/9aa862ebf2f8636383e54ce23d340db9', text: 'de kat', answer: false },
+                        { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/b40a713e2c973cb54c3c5bb67ef19af4', text: 'de man', answer: false }
+                    ]
+                },
+                { 
+                    question: 'Which one of these is "The man"?', 
+                    options: [
+                        { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/d6508c5ea6ebcb4859df33c80acd8d8c', text: 'de jongen', answer: false },
+                        { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/b40a713e2c973cb54c3c5bb67ef19af4', text: 'de man', answer: true },
+                        { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/9aa862ebf2f8636383e54ce23d340db9', text: 'de kat', answer: false }
+                    ]
+                },
+                {   question: 'which of these is "The woman" ?',
+                options:  [
+                    { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/52275a140b3fb918b49449a08283ec80',text: 'de vrouw', answer: true },
+                    { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/d6508c5ea6ebcb4859df33c80acd8d8c',text: 'de jongen', answer: false },
+                    { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/b40a713e2c973cb54c3c5bb67ef19af4',text: 'de man', answer: false }
+                ]
+            },
+                
+                
+                {   question: 'Which one of these is "The juice"?',
+                    options:  [
+                        { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/dd6539160d13378bd15c527d27f1464a',text:"het sap" ,answer: true },
+                        { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/1f0a654aa7c65395487d98fd4784c718',text: 'de server', answer: false },
+                        { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/6fd84b8a838c43c4a84b44b08b10177e',text:'het café', answer: false }
+                    ]
+                },
+                {   question: 'which of these is "The glass"?',
+                    options:  [
+                        { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/93173abe106bfaa1e2df6512e1704529',text:'leeg glas', answer: true },
+                        { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/7afea32bcf0e8c6f9d446ad4aad416be',text: 'water', answer: false },
+                        { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/dd6539160d13378bd15c527d27f1464a',text:'het sap', answer: false }
+                    ]
+                },
+                { 
+                    question: 'which one of these is "Water"?', 
+                    options: [
+                        { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/7afea32bcf0e8c6f9d446ad4aad416be', text: 'water', answer: true },
+                        { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/93173abe106bfaa1e2df6512e1704529', text: 'het glas', answer: false },
+                        { img: 'https://d2pur3iezf4d1j.cloudfront.net/images/6fd84b8a838c43c4a84b44b08b10177e', text: 'het café', answer: false }
+                    ]
+                },
+            
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let selectedOption = false; 
+        let timerInterval;
+
+        function loadQuestion() {
+            if (currentQuestionIndex < questions.length) {
+                const questionData = questions[currentQuestionIndex];
+                document.getElementById('question').innerText = questionData.question;
+                const optionsDiv = document.getElementById('options');
+                optionsDiv.innerHTML = '';
+                questionData.options.forEach(option => {
+                    const optionCard = document.createElement('div');
+                    optionCard.classList.add('col-md-2', 'card', 'm-2');
+                    optionCard.onclick = () => selectOption(optionCard, option.answer);
+                    optionCard.innerHTML = `
+                        <div class="card-body">
+                            <img src="${option.img}" class="img-fluid">
+                            <p class="mt-2">${option.text}</p>
+                        </div>`;
+                    optionsDiv.appendChild(optionCard);
+                });
+                startTimer();
             } else {
-                messageElement.textContent = 'Incorrect. Try again!';
-                messageElement.style.color = 'red';
+                document.getElementById('question').innerText = 'Quiz Finished! Your score is ' + score;
+                document.getElementById('options').innerHTML = '';
+                document.querySelector('.btn-primary').style.display = 'none'; 
+                document.querySelector('.progress-bar').style.display = 'none';
             }
         }
-    </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        function selectOption(element, isCorrect) {
+            document.querySelectorAll('.card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            stopTimer();
+            displayResult(isCorrect);
+        }
+
+        function displayResult(isCorrect) {
+            const resultDiv = document.getElementById('result');
+            if (isCorrect) {
+                resultDiv.innerHTML = 'Correct! Well done! 🎉';
+                resultDiv.style.color = 'lightgreen';
+                score += 10;
+            } else {
+                resultDiv.innerHTML = 'Incorrect answer. Try again! 😊';
+                resultDiv.style.color = 'red';
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            document.getElementById('result').innerHTML = '';
+            loadQuestion(); 
+        }
+
+        function startTimer() {
+            clearInterval(timerInterval); 
+            let timeLeft = 15;
+            const timerDiv = document.getElementById('timer');
+            timerDiv.style.width = '100%';
+            timerDiv.innerText = timeLeft + 's';
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                timerDiv.style.width = (timeLeft / 15 * 100) + '%';
+                timerDiv.innerText = timeLeft + 's';
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval); 
+                    nextQuestion(); 
+                }
+            }, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(timerInterval); 
+        }
+
+        window.onload = loadQuestion;
+    </script>
 </body>
 </html>

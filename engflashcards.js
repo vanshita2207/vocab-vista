@@ -16,7 +16,7 @@ const flashcards = [
     { question: "What does the idiom 'cost an arm and a leg'mean?", answer: "Something very expensive" },
     { question: "Convert in passive voice: They finished the project.", answer: "The project was finished by them." },
     { question: "Convert in negative form: She has been studying all day.", answer: "She has not been studying all day." },
-    { question: "What does the phrase 'a blessing in disguise' mean?", answer: "omething that seems bad at first but turns out to be good." },
+    { question: "What does the phrase 'a blessing in disguise' mean?", answer: "Something that seems bad at first but turns out to be good." },
     { question: "By the time you arrive, I ______ (finish) cooking.", answer: "will have finished" },
     { question: "She lives ______ the second floor.(on/at)", answer: "on" },
     { question: "Rewrite in past tense: He goes to school.", answer: "He went to school." },
@@ -28,20 +28,37 @@ const flashcards = [
 
 let currentCardIndex = 0;
 
+// Function to display flashcards
 function displayFlashcard() {
     const questionElement = document.getElementById("question");
     const answerElement = document.getElementById("answer");
+    const wellDoneMessage = document.getElementById("wellDoneMessage");
+    const flashcardContainer = document.getElementById("flashcard-container");
+    const nextQuestionButton = document.getElementById("nextQuestionButton");
 
-    // Display the question and answer of the current flashcard
-    questionElement.textContent = flashcards[currentCardIndex].question;
-    answerElement.textContent = flashcards[currentCardIndex].answer;
+    // Check if it's the last question
+    if (currentCardIndex === flashcards.length) {
+        // Hide the flashcard container and show the Well Done message
+        flashcardContainer.style.display = "none";
+        wellDoneMessage.style.display = "block";
+        
+        // Change the button to "Home" and set the redirect URL
+        nextQuestionButton.textContent = "Home"; // Change the button text to "Home"
+        nextQuestionButton.onclick = function() {
+            window.location.href = "index3.html"; // Redirect to the home page
+        };
+    } else {
+        // Display the current flashcard question and answer
+        questionElement.textContent = flashcards[currentCardIndex].question;
+        answerElement.textContent = flashcards[currentCardIndex].answer;
+    }
 }
 
 // Event listener for the "Next Question" button
 document.getElementById("nextQuestionButton").addEventListener("click", () => {
-    currentCardIndex = (currentCardIndex + 1) % flashcards.length; // Loop back to the first card
-    displayFlashcard();
+    currentCardIndex++;  // Move to the next question
+    displayFlashcard();   // Display the next question
 });
 
-displayFlashcard()
-
+// Initial setup to display the first flashcard
+displayFlashcard();

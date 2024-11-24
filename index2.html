@@ -1,49 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
-    <link rel="stylesheet" href="style.css">
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="/logintrial.css">
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-   </head>
-<body>
-   
-    <section>
-        
-    <div class="login-container">
-        <div class="logocontainer">
-            <img src="favicon.png" alt="logo">
-        </div>
-        
-        <h2>Login</h2>
-        <form action="#" method="POST">
-            <div class="form-group">
-                <label for="username">User ID:</label>
-                <input type="text" id="username" name="username" placeholder="Enter Email ID"required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" placeholder="Enter password"  required>
-            </div>
-            <button class="submit" type="submit"><a href="index3.html" style="text-decoration: none; font-size: large;">Login</a></button>
-        </form>
-        <p class="registered">Not registered? <a href="#">Create an account</a></p>
-        <div class="orsignwith"><p class="orsignwith">or sign in with</p></div>
-        <div class="buttons">
-        <button class="google" type="GOOGLE">
-            <img src="https://www.logolynx.com/images/logolynx/s_6f/6f498c46dc746d49810e481d959b6d95.png" alt="google logo">
-            <button class="apple" type="apple">
-                <img src="https://seeklogo.com/images/A/apple-logo-E3DBF3AE34-seeklogo.com.png" alt="apple logo">
-            </button>
-         </button>
-         <button class="facebook" type="facebook">
-            <img src="roundfb.jpg" alt="facebook">
-         </button>
-        </div>
-    </div>
+    <style>
+        body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    margin-bottom: 0%;
+    background-size: 100%;
+ 
+    background-repeat: no-repeat;
+    background-image: url(loginbackground.webp);
+}
+
+.login-container {
+    background-color: transparent;
+
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px white;
+    width: 400px;
+    height:300px;
+    text-align: center;
+    color: rgb(19, 13, 13);
+    margin-top: 130px;
+    margin-left: 400px;
+    display: block;
     
+}
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+}
+
+
+.logocontainer {
+    color: black;
+    height: 40px;
+}
+
+.logocontainer img {
+    height: 50px;
+}
+
+
+
+h2 {
+    margin-bottom: 20px;
+    color: rgb(244, 241, 241);
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+    color: white;
+    margin-right: 15px;
+
+}
+.remember-me {
+    display: flex;
+    /* align-items: center; */
+    color: white;
+    margin-top: 10px;
+}
+
+.remember-me input {
+    margin-right: 10px;
+    width: 10px;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+
+input {
+    width: 99%;
+    padding: 10px;
+    border: 1px solid #f1eeee;
+    border-radius: 4px;
+
+}
+.loginbutton-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 440px;
+    height:50px;
+    margin-left: 400px;
+    margin-top: 10px;
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: 0 0 10px white;
+    
+    
+}
+
+.loginbutton-container:hover {
+    background-color: #1b3640;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+    </style>
+</head>
+
+<body>
+
+    <section>
+        <div class="login-container">
+            <div class="logocontainer">
+                <img src="favicon.png" alt="logo">
+            </div>
+
+            <h2>Login</h2>
+            <form id="loginForm" onsubmit="return validateForm()">
+                <div class="form-group">
+                    <label for="username">User ID:</label>
+                    <input type="text" id="username" name="username" placeholder="ENTER Mobile NO./Email Address" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Enter Password:</label>
+                    <input type="password" id="password" name="password" placeholder="ENTER PASSWORD" required>
+                </div>
+                <div class="form-group remember-me">
+                    <input style="width: 15px;" type="checkbox" id="rememberMe" name="rememberMe">
+                    <label style="width: 120px;" for="rememberMe">Remember me</label>
+                </div>
+            </form>
+        </div>
+
+        <div class="loginbutton-container">
+            <button class="submit" type="submit" onclick="return validateForm()" style="background-color: transparent; border-radius:10px; color:white; width: 440px;height:50px; border:none; cursor:pointer;font-size:large">LOGIN</button>
+        </div>  
     </section>
+
+    <script>
+        
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            
+            if (username === "" || password === "") {
+                alert("Please fill out both User ID and Password.");
+                return false;  
+            }
+
+           
+
+          
+            window.location.href = "index3.html";  
+            return false;  
+        }
+    </script>
 </body>
 </html>
-    

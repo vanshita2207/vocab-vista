@@ -3,38 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spanish Ques</title>
+    <title>Russian</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style2.css"/>
     <link rel="stylesheet" href="css/responsivee.css"/>
     <style>
-        body {
-            background-image: url(https://i.pinimg.com/originals/33/de/d4/33ded4b1e7b3861e530494cecb456c25.gif);
-            background-repeat: no-repeat;
-            background-size: cover;
+        @media (min-width: 992px) {
+            body {
+                background-image: url(bg\ 5_enhanced.jpg);
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
         }
         .question {
             text-align: center;
             margin-top: 130px;
             font-size: 25px;
             font-family: Georgia, serif;
+         
         }
         .answer-button {
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: rgb(127, 172, 255);
-            margin: 100px 100px 0 0;
-            padding: 60px 0;
+            background-color: #FFD35A;
+            margin: 20px;
+            padding: 30px;
+            height: 183px;
             border-radius: 6px;
             cursor: pointer;
-            margin-left: 60px;
         }
         .continue-button {
             border-radius: 10px;
-            background-color: rgb(255, 200, 0);
+            background-color: #219C90;
             color: white;
             font-family: bold;
+            margin-left: auto;
+            display: block;
+            margin-top: 20px;
         }
         .continue-button:hover {
             box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
@@ -45,64 +51,479 @@
             font-size: 20px;
             font-weight: bold;
         }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .col-lg-4 {
+            width: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .continue-button2{
+            border-radius: 10px;
+            background-color: #219C90;
+            color: white;
+            font-family: bold;
+            margin-left: 1000px;
+            display: block;
+            margin-top: 20px;   
+        }
+        .continue-button2:hover {
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        .score-update {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            text-align:center;
+            color:darkblue;
+        }
+        .score-updatee{
+            font-size: 40px;
+            font-weight: bold;
+            margin-top: 300px;
+            text-align:center;
+            color:orange;
+
+        }
+        .last-button{
+            margin-left:670px;
+            background-color:rgb(255, 200, 0); 
+            color:white;
+            display: inline;
+            border-radius: 7px;
+
+        }
+        .last-button:hover {
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        .l-b{
+            background-color:rgb(255, 200, 0); 
+            color:white;
+            display: inline;
+            border-radius: 7px; 
+            margin-left:18px  
+        }
+        
+.progressb {
+    width: 0%;
+    margin-top: 10px;
+    margin-left: 400px;
+    height: 10px;
+    border-radius: 10px;
+    background-color: grey; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+
+progress {
+    width: 100%;
+    height: 100%;
+    appearance: none; 
+}
+
+
+progress::-webkit-progress-bar {
+    background-color: #f3f3f3; 
+    border-radius: 7px;
+}
+
+progress::-webkit-progress-value {
+    background-color:#FAB12F; 
+    border-radius: 8px;
+}
+
+
+.answer-button:hover{
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);  
+}
+
+
+
+
     </style>
+    <div><progress  max="10" id="progressBar" style="width:50%;margin-top:40px;margin-left: 400px;"class="progressb"></progress></div>
 </head>
+
 <body>
-    <nav style="margin-top: 80px;">
-        <progress value="40" max="100" style="margin-left: 650px; width: 250px;"></progress>
-    </nav>
     
-    <p class="question">How do you pronounce <strong>'I HAVE'</strong> in spanish?</p>
+    
+
+    <div class="container">
+        <div class="page active" id="page1">
+            <p class="question">Which of the following is the Russian word for <strong>"hello"</strong>? </p>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="answer-button" onclick="showResult('correct', 1)">
+                        <h5>Привет 
+                        </h5>
+                        <img src="hello.png" style="height: 90px; width: 70px;">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="answer-button" onclick="showResult('incorrect', 1)">
+                        <h5>еда </h5>
+                        <img src="burger.animated-removebg-preview.png" style="height: 100px; width: 70px;">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="answer-button" onclick="showResult('incorrect', 1)">
+                        <h5>Пока 
+                        </h5>
+                        <img src="bye-removebg-preview.png" style="height: 90px; width: 70px;">
+                    </div>
+                </div>
+            </div>
+
+            <p class="result-message" id="resultMessage1"></p>
+            <p class="score-update" id="scoreUpdate1"></p>
+
+            <button class="continue-button" onclick="goToNextPage(2)">CONTINUE</button>
+        </div>
+
+        <div class="page" id="page2">
+            <p class="question"> What is the Russian word for <strong>"goodbye"?</strong></p>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="answer-button" onclick="showResult('incorrect', 2)">
+                        <h5>Пока 
+                        </h5>
+                        <img src="bye-removebg-preview.png" style="height: 60px; width: 60px;">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="answer-button" onclick="showResult('correct', 2)">
+                        <h5>До свидания </h5>
+                        <img src="gb3-removebg-preview.png"  style="height: 90px; width: 90px;">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="answer-button" onclick="showResult('incorrect', 2)">
+                        <h5>Здравствуй </h5>
+                        <img src="hello.png"  style="height: 80px; width: 80px;">
+                    </div>
+                </div>
+            </div>
+
+            <p class="result-message" id="resultMessage2"></p>
+            <p class="score-update" id="scoreUpdate2"></p>
+            <button class="continue-button" onclick="goToNextPage(3)">CONTINUE</button>
+        </div>
+
+        <div class="page" id="page3">
+            <p class="question">What is the Russian word for <strong>"city"?</strong></p>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="answer-button" onclick="showResult('incorrect', 3)">
+                        <h5>Страна </h5>
+                        <img src="https://cdn.vectorstock.com/i/500p/49/65/landscape-green-meadow-field-vector-33844965.jpg"  style="height: 60px; width: 60px;">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="answer-button" onclick="showResult('correct', 3)">
+                        <h5> Город</h5>
+                        <img src="https://thumbs.dreamstime.com/b/seamless-cartoon-city-background-vector-illustration-separate-layers-92796292.jpg" style="height: 90px; width: 90px;">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="answer-button" onclick="showResult('incorrect', 3)">
+                        <h5>Село </h5>
+                        <img src="https://i.pinimg.com/736x/d7/c1/7d/d7c17d863e5f5e401f3b60409d6c749e.jpg"  style="height: 80px; width: 80px;">
+                    </div>
+                </div>
+            </div>
+
+            <p class="result-message" id="resultMessage3"></p>
+            <p class="score-update" id="scoreUpdate3"></p>
+            <button class="continue-button" onclick="goToNextPage(4)">CONTINUE</button>
+        </div>
+
+        <div class="page" id="page4">
+            <p class="question">Which of the following is the Russian word for <strong>"cat"?</strong></p>
+            <div class="row">
+                <div class="col-lg-4">
+                   <div class="answer-button" onclick="showResult('incorrect', 4)">
+                        <h5>Собака 
+                        </h5>
+                        <img src="dog-removebg-preview.png" style="height: 60px; width: 60px;">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="answer-button" onclick="showResult('incorrect', 4)">
+                        <h5>Лев </h5>
+                        <img src="lion-removebg-preview.png" style="height: 90px; width: 90px;">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="answer-button" onclick="showResult('correct', 4)">
+                        <h5>Кошка </h5>
+                        <img src="cat2-removebg-preview.png" style="height: 60px; width: 60px;">
+                    </div>
+                </div>
+            </div>
+
+            <p class="result-message" id="resultMessage4"></p>
+            <p class="score-update" id="scoreUpdate4"></p>
+            <button class="continue-button" onclick="goToNextPage(5)">CONTINUE</button>
+        </div>
+
+    </div>
+    <div class="page" id="page5">
+    <p class="question"> What is the Russian word for<strong>"thank you"?</strong></p>
     
     <div class="row">
-        <div class="col-lg-3">
-            <div class="answer-button" onclick="showResult('incorrect')">
-                <h5>MADRE</h5>
-                <img src="https://img.freepik.com/free-photo/happy-mothers-day-celebration_23-2151306172.jpg" style="height: 60px; width: 60px;">
+        <div class="col-lg-4">
+            <div class="answer-button" onclick="showResult('correct',5)">
+                <h5>Благодарю </h5>
+                <img src="https://www.shutterstock.com/shutterstock/videos/1098272249/thumb/7.jpg?ip=x480" style="height: 60px; width: 60px;">
             </div>
         </div>
-        <div class="col-lg-3">
-            <div class="answer-button" onclick="showResult('correct')">
-                <h5>YO TENGO</h5>
-                <img src="https://cdn.vectorstock.com/i/500p/23/16/confident-man-pointing-at-himself-with-a-big-smile-vector-46422316.jpg"  style="height: 90px; width: 90px;">
+        <div class="col-lg-4">
+            <div class="answer-button" onclick="showResult('incorrect',5)">
+                <h5>Привет</h5>
+                <img src="hello.png" style="height: 90px; width: 90px;">
             </div>
         </div>
-        <div class="col-lg-3">
-            <div class="answer-button" onclick="showResult('incorrect')">
-                <h5>BIEN</h5>
-                <img src="https://media.istockphoto.com/id/1337183322/vector/fingers-for-teaching-early-counting-in-children-education-stock-illustration-hands-body.jpg?s=612x612&w=0&k=20&c=ofTEnS98LMy0_z3vwlujdw-aTZZmFpWwoAOgynPyDN0=" style="height: 80px; width: 80px;">
+        <div class="col-lg-4">
+            <div class="answer-button" onclick="showResult('incorrect',5)">
+                <h5>Извините</h5>
+                <img src="sorry-removebg-preview.png" style="height: 80px; width: 80px;">
             </div>
         </div>
-        <div class="col-lg-3">
-            <div class="answer-button" onclick="showResult('incorrect')">
-                <h5>ADIOS</h5>
-                <img src="https://cdn-icons-gif.flaticon.com/10246/10246772.gif"  style="height: 80px; width: 80px;">
+        
+        </div>
+        <p class="result-message" id="resultMessage5"></p>
+        <p class="score-update" id="scoreUpdate5"></p>
+        <button class="continue-button2" onclick="goToNextPage(6)">CONTINUE</button>
+    </div>
+    <div class="page" id="page6"> 
+        <p class="question">What is the Russian word for<strong> "book"?</strong></p>  
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="answer-button" onclick="showResult('incorrect',6)">
+                <h5> Журнал</h5>
+                <img src="journal-removebg-preview.png" style="height: 60px; width: 60px;">
             </div>
         </div>
+        <div class="col-lg-4">
+            <div class="answer-button" onclick="showResult('incorrect',6)">
+                <h5>Тетрадь</h5>
+                <img src='https://media.istockphoto.com/id/149402372/photo/notebook.jpg?s=612x612&w=0&k=20&c=aGoLZSVt9IXBiO_bsJqvP9pjiyVJ7cETmSZm5fKjdUI=' style="height: 90px; width: 90px;">
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="answer-button" onclick="showResult('correct',6)">
+                <h5>Книга</h5>
+                <img src="book-removebg-preview.png" style="height: 80px; width: 80px;">
+            </div>
+            </div>
+        </div>
+        <p class="result-message" id="resultMessage6"></p>
+        <p class="score-update" id="scoreUpdate6"></p>
+    <button class="continue-button2" onclick="goToNextPage(7)">CONTINUE</button>
+    </div>
+    <div class="page" id="page7"> 
+    <p class="question"> Which of the following means <strong>"good morning"</strong> in Russian?</p>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="answer-button" onclick="showResult('correct',7)">
+                <h5> Добрый вечер</h5>
+                <img src="https://media.istockphoto.com/id/531242144/vector/sunrise-over-green-hills.jpg?s=612x612&w=0&k=20&c=6g3VwxwIqgU0RGZr0t1fRxdYxbzgYEA3hQmvQiAQwXY=" style="height: 60px; width: 60px;">
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="answer-button" onclick="showResult('incorrect',7)">
+                <h5>Спокойной ночи</h5>
+                <img src="https://media.istockphoto.com/id/1351985254/vector/full-moon-landscape.jpg?s=612x612&w=0&k=20&c=v8RrJ81Wqj3FEMEIm0oQF5HERauDWB73n2EDy01ukOs="  style="height: 90px; width: 90px;">
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="answer-button" onclick="showResult('incorrect',7)">
+                <h5>Привет</h5>
+                <img src="hello.png" style="height: 80px; width: 80px;">
+            </div>
+            
+        </div>
+        
+        
+    </div>
+    <p class="result-message" id="resultMessage7"></p>
+    <p class="score-update" id="scoreUpdate7"></p>
+    <button class="continue-button2" onclick="goToNextPage(8)">CONTINUE</button>
+   
+    
     </div>
     
-    <p class="result-message" id="resultMessage"></p>
+    <div class="page" id="page8">
+        
+    <p class="question">What does <strong>"пожалуйста"</strong>mean in English?</p>
+    
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="answer-button" onclick="showResult('incorrect',8)">
+                <h5>SORRY</h5>
+                <img src="sorry-removebg-preview.png" style="height: 60px; width: 60px;">
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="answer-button" onclick="showResult('correct',8)">
+                <h5>PLEASE</h5>
+                <img src="joined_hands-removebg-preview.png" style="height: 90px; width: 90px;">
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="answer-button" onclick="showResult('incorrect',8)">
+                <h5>THANK YOU</h5>
+                <img src="https://www.shutterstock.com/shutterstock/videos/1098272249/thumb/7.jpg?ip=x480" style="height: 80px; width: 80px;">
+            </div>
+        </div>
+       
+        </div>
+    
+    
+    <p class="result-message" id="resultMessage8"></p>\
+    <p class="score-update" id="scoreUpdate8"></p>
+    <button class="continue-button2" onclick="goToNextPage(9)">CONTINUE</button>
+        </div>
+        <div class="page" id="page9">
+            <p class="question">Which of the following is the Russian word for <strong>"bread"?</strong></p>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="answer-button" onclick="showResult('incorrect',9)">
+                    <h5>Молоко </h5>
+                    <img src="milk-removebg-preview.png" style="height: 60px; width: 60px;">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="answer-button" onclick="showResult('correct',9)">
+                    <h5>Хлеб </h5>
+                    <img src="bread-removebg-preview.png" style="height: 90px; width: 90px;">
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="answer-button" onclick="showResult('correct',9)">
+                    <h5>Вода</h5>
+                    <img src="https://img.freepik.com/free-photo/water-anime-style_23-2151080280.jpg?semt=ais_hybrid" style="height: 80px; width: 80px;">
+                </div>
+              
+            </div>
+          
+            
+        
+        
+        </div>
+        <p class="result-message" id="resultMessage9"></p>
+        <p class="score-update" id="scoreUpdate9"></p>
+        <button class="continue-button2" onclick="goToNextPage(10)">CONTINUE</button>  
+        </div>
+        <div class="page" id="page10">
+        <p class="question">What is the Russian word for <strong>"beautiful"?</strong></p>   
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="answer-button" onclick="showResult('incorrect',10)">
+                    <h5>Добрый вечер </h5>
+                    <img src="https://media.istockphoto.com/id/531242144/vector/sunrise-over-green-hills.jpg?s=612x612&w=0&k=20&c=6g3VwxwIqgU0RGZr0t1fRxdYxbzgYEA3hQmvQiAQwXY=" style="height: 60px; width: 60px;">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="answer-button" onclick="showResult('incorrect',10)">
+                    <h5>Привет</h5>
+                    <img src="hello.png" style="height: 90px; width: 90px;">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="answer-button" onclick="showResult('correct',10)">
+                    <h5>Красивый</h5>
+                    <img src="beatiful-removebg-preview.png" style="height: 80px; width: 80px;">
+                </div>
+            </div>
+            </div>
+            <p class="result-message" id="resultMessage10"></p>
+            <p class="score-update" id="scoreUpdate10"></p>
+            <button class="continue-button2" onclick="goToNextPage(11)">CONTINUE</button>
 
-    <a href="index9.html" style="margin-left: 50px">
-        <button class="continue-button">PREVIOUS</button>
-    </a>
-    <a href="index11.html" style="margin-left: 1400px">
-        <button class="continue-button">CONTINUE</button>
-    </a>
+        </div>
+        <div class="page" id="page11">
+        <p class="score-updatee" id="Scoreenhance"></p>
+        <p class="score-update" id="correct10"></p>
+        <p class="score-update" id="incorrect10"></p>
+        <button class="last-button" onclick="goToNextPage(1)">START</button>
+        <button class="l-b"><a href="index3.html" style="text-decoration: none; color: white;">HOME BUTTON</a></button>
+        </div>
+         
 
     <script>
-        function showResult(result) {
-            const messageElement = document.getElementById('resultMessage');
+        let score=0
+        let correct=0
+        let incorrect=0
+        function showResult(result, questionNumber) {
+            var resultMessage = document.getElementById("resultMessage" + questionNumber);
+            let scoreUpdate = document.getElementById("scoreUpdate"+questionNumber);
+            let Scoreenhance= document.getElementById("Scoreenhance");
+            let correct10= document.getElementById("correct10");
+            let incorrect10= document.getElementById("incorrect10");
+
             if (result === 'correct') {
-                messageElement.textContent = 'Correct! YO TENGO is the right answer.';
-                messageElement.style.color = 'green';
+                resultMessage.innerHTML = "Correct! ";
+                resultMessage.style.color = "green";
+                score+=10;
+                correct+=1
             } else {
-                messageElement.textContent = 'Incorrect. Try again!';
-                messageElement.style.color = 'red';
+                resultMessage.innerHTML = "Incorrect!";
+                resultMessage.style.color = "red";
+                score-=10
+                incorrect+=1
             }
+            scoreUpdate.innerHTML = `Your score: ${score}`;
+            Scoreenhance.innerHTML = `Your final score: ${score}`;
+            correct10.innerHTML = `CORRECT COUNT:${correct}`;
+            incorrect10.innerHTML = `INCORRECT COUNT:${incorrect}`;
+        
+            if (score<0){
+            score=0;
+            }  
+            scoreUpdate.textContent=`score:${score}`;
+            if (correct>10){
+                correct=10;
+            }
+            if (incorrect>10){
+                incorrect=10;
+            }
+            correct10.textContent=`CORRECT COUNT:${correct}`;
+            incorrect10.textContent=`INCORRECT COUNT:${incorrect}`;
         }
+        function goToNextPage(pageNumber) {
+            
+            var currentPage = document.querySelector(".page.active");
+            currentPage.classList.remove("active");
+
+            
+            var nextPage = document.getElementById("page" + pageNumber);
+            nextPage.classList.add("active");
+           
+            var progressBar = document.getElementById("progressBar")
+            progressBar.value=pageNumber-1  
+        }
+        
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

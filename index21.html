@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>German Quiz</title>
+    <style>
+      
+    body {
+        background-image: url(germanbackground.webp);
+        margin: 0;
+        height: 100vh;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .container {
+        text-align: center;
+    }
+
+    .card {
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+        flex: 0 0 auto;
+        width: 16rem;
+        background-color: #D4F6FF;
+        overflow: hidden;
+        border-radius: 8px;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .question {
+        margin-bottom: 20px;
+        font-size: 30px;
+    }
+
+    .card img {
+        width: 150px; /* Fixed width */
+        height: 150px; /* Fixed height */
+        object-fit: cover; /* Ensures images fit dimensions proportionally */
+        display: block; /* Ensures the image behaves as a block element */
+        margin: 0 auto; /* Centers the image inside the card */
+    }
+
+    .card video {
+        width: 100%;
+        height: auto;
+    }
+
+    .card-row {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    #score {
+        font-size: 24px;
+        margin-top: 20px;
+    }
+</style>
+
+  
+</head>
+<body>
+    <div class="container">
+        <!-- Question -->
+        <h3 class="question" id="question">Frage wird geladen...</h3>
+        
+        <!-- Video Question -->
+        <video id="video-question" width="640" controls style="display: none;"></video>
+
+        <!-- Horizontal Row of Cards -->
+        <div class="card-row" id="options"></div>
+
+        <!-- Score -->
+        <div id="score">Score: 0</div>
+    </div>
+
+    <script>
+        // Quiz data
+        const questions = [
+            {
+                question: "Which picture shows a cat?",
+                options: [
+                    { text: "Ein Hund", image: "https://img.freepik.com/free-vector/cute-dog-cartoon-character-standing_1308-133833.jpg?semt=ais_hybrid" },
+                    { text: "Ein Katze", image: "https://media.istockphoto.com/id/1097490360/vector/vector-illustration-of-cute-black-cat.jpg?s=612x612&w=0&k=20&c=Ef0qYl79aZJ6NJXJVbJ0onjXVNnSyqrN_TKPjieAIGE=" },
+                    { text: "Ein Vogel", image: "https://thumbs.dreamstime.com/b/illustration-blue-bird-cartoon-singing-30204548.jpg" }
+                ],
+                correct: "Ein Katze"
+            },
+
+            {
+                question: "What is the meaning of Ein'?",
+                options: [
+                    { text: "article 'A'", image: "https://as2.ftcdn.net/v2/jpg/02/09/70/41/1000_F_209704181_M6KX2j1O8uhGFWciIs54TERpDUbgyxcB.jpg" },
+                    { text: "article 'An'", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR55rvQG_VCogrXKfIqlrLCle1tmdpDRF31ESdz7BFPLkqA3RBZagPslIOUW953JE1g4X8&usqp=CAU" },
+                    { text: "article 'The'", image: "https://images2.minutemediacdn.com/image/upload/c_crop,w_5184,h_2916,x_0,y_208/c_fill,w_752,ar_16:9,f_auto,q_auto,g_auto/images/voltaxMediaLibrary/mmsport/mentalfloss/01gq5z39t51bh3mnswf9.jpg" }
+                ],
+                correct: "article 'A'"
+            },
+            {
+                question: " Hello in German? ",
+                options: [
+                    { text: "Tschüss", image: "https://img.freepik.com/premium-vector/bye-bye-cute-emoji-cartoon-character-yellow-backround_106878-540.jpg" },
+                    { text: "Guten Morgen", image: "https://t4.ftcdn.net/jpg/09/97/75/01/360_F_997750155_hG1zZt02aW6UQaZq7qIuLQYUjP6UsZcl.jpg"},
+                    { text: "Hallo", image: "https://img.freepik.com/premium-vector/lettering-hello_150234-151553.jpg" }
+            ],
+                correct: "Hallo"
+            },
+            {
+                question: " how are you? in German",
+                options: [
+                    { text: "wer bist du?", image:"https://quizizz.com/_media/quizzes/f1f92fee-1517-4311-8657-e86f920a945d-v2" },
+                    { text: "Wie geht es dir?", image:"https://mytutorsource.hk/assets/admin/blogimages/1652086197.A-guide-to-introducing-yourself-Responses-to-How-Are-You.png" },
+                    { text: "Wo bist du?", image:"https://media.tenor.com/M5_kSkKSi2cAAAAe/where-are-you.png"}
+                ],
+                correct: "Wie geht es dir?"
+            }
+            ];
+
+
+            // {
+            //     question: "  ",
+            //     options: [
+            //         { text: "", image: "" },
+            //         { text: "", image: ""},
+            //         { text: "", image: "" }
+            // ],
+            //     correct: ""
+            // },
+            // {
+            //     question: " Hello in German? ",
+            //     options: [
+            //         { text: "Tschüss", image: "https://img.freepik.com/premium-vector/bye-bye-cute-emoji-cartoon-character-yellow-backround_106878-540.jpg" },
+            //         { text: "Guten Morgen", image: "https://t4.ftcdn.net/jpg/09/97/75/01/360_F_997750155_hG1zZt02aW6UQaZq7qIuLQYUjP6UsZcl.jpg"},
+            //         { text: "Hallo", image: "https://img.freepik.com/premium-vector/lettering-hello_150234-151553.jpg" }
+            // ],
+            //     correct: "Hallo"
+            // },
+            // {
+            //     question: " Hello in German? ",
+            //     options: [
+            //         { text: "Tschüss", image: "https://img.freepik.com/premium-vector/bye-bye-cute-emoji-cartoon-character-yellow-backround_106878-540.jpg" },
+            //         { text: "Guten Morgen", image: "https://t4.ftcdn.net/jpg/09/97/75/01/360_F_997750155_hG1zZt02aW6UQaZq7qIuLQYUjP6UsZcl.jpg"},
+            //         { text: "Hallo", image: "https://img.freepik.com/premium-vector/lettering-hello_150234-151553.jpg" }
+            // ],
+            //     correct: "Hallo"
+            // },
+            // {
+            //     question: " Hello in German? ",
+            //     options: [
+            //         { text: "Tschüss", image: "https://img.freepik.com/premium-vector/bye-bye-cute-emoji-cartoon-character-yellow-backround_106878-540.jpg" },
+            //         { text: "Guten Morgen", image: "https://t4.ftcdn.net/jpg/09/97/75/01/360_F_997750155_hG1zZt02aW6UQaZq7qIuLQYUjP6UsZcl.jpg"},
+            //         { text: "Hallo", image: "https://img.freepik.com/premium-vector/lettering-hello_150234-151553.jpg" }
+            // ],
+            //     correct: "Hallo"
+            // },
+            // {
+            //     question: " Hello in German? ",
+            //     options: [
+            //         { text: "Tschüss", image: "https://img.freepik.com/premium-vector/bye-bye-cute-emoji-cartoon-character-yellow-backround_106878-540.jpg" },
+            //         { text: "Guten Morgen", image: "https://t4.ftcdn.net/jpg/09/97/75/01/360_F_997750155_hG1zZt02aW6UQaZq7qIuLQYUjP6UsZcl.jpg"},
+            //         { text: "Hallo", image: "https://img.freepik.com/premium-vector/lettering-hello_150234-151553.jpg" }
+            // ],
+            //     correct: "Hallo"
+            // },
+            // {
+            //     question: " Hello in German? ",
+            //     options: [
+            //         { text: "Tschüss", image: "https://img.freepik.com/premium-vector/bye-bye-cute-emoji-cartoon-character-yellow-backround_106878-540.jpg" },
+            //         { text: "Guten Morgen", image: "https://t4.ftcdn.net/jpg/09/97/75/01/360_F_997750155_hG1zZt02aW6UQaZq7qIuLQYUjP6UsZcl.jpg"},
+            //         { text: "Hallo", image: "https://img.freepik.com/premium-vector/lettering-hello_150234-151553.jpg" }
+            // ],
+            //     correct: "Hallo"
+            // },
+        
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        const questionElement = document.getElementById("question");
+        const optionsElement = document.getElementById("options");
+        const scoreElement = document.getElementById("score");
+        const videoElement = document.getElementById("video-question");
+
+        function loadQuestion() {
+            if (currentQuestionIndex >= questions.length) {
+                questionElement.textContent = "Gut gemacht! Du hast das Quiz abgeschlossen.";
+                optionsElement.innerHTML = ""; // Clear options
+                scoreElement.textContent = `Endgültige Punktzahl: ${score}`;
+                videoElement.style.display = "none";
+                return;
+            }
+
+            const currentQuestion = questions[currentQuestionIndex];
+            questionElement.textContent = currentQuestion.question;
+
+            // Load video if available
+            if (currentQuestion.video) {
+                videoElement.src = currentQuestion.video;
+                videoElement.style.display = "block";
+            } else {
+                videoElement.style.display = "none";
+            }
+
+            // Render options
+            optionsElement.innerHTML = "";
+            currentQuestion.options.forEach(option => {
+                const card = document.createElement("div");
+                card.className = "card";
+
+                card.innerHTML = `
+                    <div class="card-body text-center">
+                        ${option.image ? `<img src="${option.image}" alt="${option.text}">` : ""}
+                        <p class="card-text">${option.text}</p>
+                    </div>
+                `;
+                card.addEventListener("click", () => checkAnswer(option.text));
+                optionsElement.appendChild(card);
+            });
+        }
+
+        function checkAnswer(selectedOption) {
+            const currentQuestion = questions[currentQuestionIndex];
+            if (selectedOption === currentQuestion.correct) {
+                score++;
+                scoreElement.textContent = `score: ${score}`;
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                alert("Incorrect Answer..Let's Try Again.");
+            }
+        }
+
+        // Initialize quiz
+        loadQuestion();
+    </script>
+</body>
+</html>
+
+    

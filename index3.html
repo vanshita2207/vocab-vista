@@ -1,173 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Language Learning</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+  <style>
+    body{
+      background-color: #d3e9fd;
+    }
+    /* Custom CSS for the full image box */
+    .img-box {
+      position: relative;
+      width: 100%;
+      height: 200px; /* Adjust the height as needed */
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      border-radius: 8px; /* Rounded corners */
+    }
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>learning goal</title>
-        <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-        <style>
-            button{
-                display: inline-block;
+    /* Hover effect to zoom in the image */
+    .img-box:hover {
+      transform: scale(1.1);
+      opacity: 0.9;
+    }
+
+    /* Optional: Add overlay with text on hover */
+    .img-box .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3); /* Dark overlay */
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 8px; /* Rounded corners to match image */
+    }
+
+    .img-box:hover .overlay {
+      opacity: 1;
+    }
+
+    /* Optional: Text styling inside overlay */
+    .overlay h3 {
+      font-size: 25px;
+      font-weight: bold;
+    }
+    .navbar {
+      z-index: 10;}
+
+      h1{
+        color: rgb(8, 8, 8);
+        font-size: 40px;
+        font-weight: 700;
             }
-            body{
-                background-color: white;
-            }
-            h1{
-                color: rgb(8, 8, 8);
-                font-size: 40px;
-                font-weight: 700;
-            }
-            .div{
-                padding-left: 50px;
-                
-            }
-            .box {
-                align-items: center;
-                text-align: center;
-                height: 120px;
-                padding-top: 70px;
-                display: inline-block;
-                font-size: 17px;
-                font-weight: 700;
-                line-height: 1.2;
-                
-            }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="favicon.png" alt="Vocab Vista Logo" width="30" height="30" class="d-inline-block align-text-top">
+            <b>Vocab Vista</b>
+          </a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#footer">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index17.html">Explore</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index2.html">Get Started</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav><br>
 
-            .languages {
-                /* margin: 50px; */
-                width: 180px;
-                border-radius: 15px;
-                margin-left: 106px;
-                margin-bottom: 60px;
-            }
-            .languages{
-                background-color: rgb(203, 241, 255);
-            }
-        </style>
-    </head>
+  <center>
+    <h1>I want to learn...</h1>
+</center>
 
-    <body>
-        <h style="font-size: bold;">Vocab Vista</h>
-        <hr>
-        <br>
-        <br>
-        <center>
-            <h1>I want to learn...</h1><br>
-            <br><br>
-        </center>
-
-        <button class="languages"
-        id="englishButton">
-            <div class="box">
-               <img src="https://d35aaqx5ub95lt.cloudfront.net/vendor/bbe17e16aa4a106032d8e3521eaed13e.svg"><br>
-                <br>
-                <center>English</center>
-            </div>
-        </button>
-        <script>
-            document.getElementById("englishButton").addEventListener("click",function(){
-                window.location.href="index4p2.html";
-            });
-        </script>
-
-
-        <button class="languages">
-            <div class="box">
-                <img src="https://d35aaqx5ub95lt.cloudfront.net/vendor/73837fa39dbf1bcc4c95a17a58ed0ffb.svg"><br>
-                <br>
-                <center>Hindi</center>
-            </div>
-        </button>
-
-
+  <div class="container mt-5">
+    <div class="row">
+      <!-- Language 1 -->
+      <div class="col-md-3 mb-4">
+        <a href="index4p2.html">
+        <div class="img-box" style="background-image: url(english.jpg);">
+          <div class="overlay">
+            <h3>English</h3>
+          </div>
+        </div>
+    </a>
+      </div>
+      <!-- Language 2 -->
+      <div class="col-md-3 mb-4">
+        <a href="index7.html">
+        <div class="img-box" style="background-image: url(spanish.jpg);">
+          <div class="overlay">
+            <h3>Spanish</h3>
+          </div>
+        </div>
+      </a>
+      </div>
+      <!-- Language 3 -->
+      <div class="col-md-3 mb-4">
         <a href="index5.html">
-        <button class="languages">
-            <div class="box">
-                <img src="https://d35aaqx5ub95lt.cloudfront.net/vendor/482fda142ee4abd728ebf4ccce5d3307.svg"><br>
-                <br>
-                <center>French</center>
-            </div>
-        </button>
+        <div class="img-box" style="background-image: url(french.jpg);">
+          <div class="overlay">
+            <h3>French</h3>
+          </div>
+        </div>
     </a>
+      </div>
+      <!-- Language 4 -->
+      <div class="col-md-3 mb-4">
+        <a href="index11.html">
+        <div class="img-box" style="background-image: url(german.jpg);">
+          <div class="overlay">
+            <h3>German</h3>
+          </div>
+        </div>
+      </a>
+      </div>
+    </div>
 
-
-        <button class="languages">
-            <div class="box">
-                <img src="https://d35aaqx5ub95lt.cloudfront.net/vendor/c71db846ffab7e0a74bc6971e34ad82e.svg"><br>
-                <br>
-                <center>German</center>
-            </div>
-        </button>
-        <br>
-
-        <button class="languages">
-            <div class="box">
-                <img src="https://d35aaqx5ub95lt.cloudfront.net/vendor/edea4fa18ff3e7d8c0282de3f102aaed.svg"><br>
-                <br>
-                <center>Japanese</center>
-            </div>
-        </button>
-
-
-        <a href="index6.html">
-        <button class="languages">
-            <div class="box">
-                <img src="https://d35aaqx5ub95lt.cloudfront.net/vendor/59a90a2cedd48b751a8fd22014768fd7.svg"><br>
-                <br>
-                <center>Spanish</center>
-            </div>
-        </button>
+    <div class="row">
+      <!-- Language 5 -->
+       <a href="index6.html">
+      <div class="col-md-3 mb-4">
+        <div class="img-box" style="background-image: url(italy.jpg);">
+          <div class="overlay">
+            <h3>Italian</h3>
+          </div>
+        </div>
     </a>
+      </div>
+      <!-- Language 6 -->
+      <div class="col-md-3 mb-4">
+        <a href="index8.html">
+        <div class="img-box" style="background-image: url(portuguese.webp);">
+          <div class="overlay">
+            <h3>Portuguese</h3>
+          </div>
+        </div>
+      </a>
+      </div>
+      <!-- Language 7 -->
+      <div class="col-md-3 mb-4">
+        <a href="index10.html">
+        <div class="img-box" style="background-image: url(russia.avif);">
+          <div class="overlay">
+            <h3>Russian</h3>
+          </div>
+        </div>
+      </a>
+      </div>
+      <!-- Language 8 -->
+      <div class="col-md-3 mb-4">
+        <a href="index9.html">
+        <div class="img-box" style="background-image: url(dutch.jpg);">
+          <div class="overlay">
+            <h3>Dutch</h3>
+          </div>
+        </div>
+      </a>
+      </div>
+    </div>
+  </div>
 
-
-        <button class="languages">
-            <div class="box">
-                <img src="https://d35aaqx5ub95lt.cloudfront.net/vendor/ec5835ac9f465ff3dad4b1b8725d4314.svg"><br>
-                <br>
-                <center>korean</center>
-            </div>
-        </button>
-
-
-        <button class="languages">
-            <div class="box">
-                <img src="https://d35aaqx5ub95lt.cloudfront.net/vendor/635a09df9323279d39934a991edd4510.svg"><br>
-                <br>
-                <center>italian</center>
-            </div>
-        </button>
-        <br>
-
-
-        <button class="languages">
-            <div class="box">
-                <img src="https://d35aaqx5ub95lt.cloudfront.net/vendor/27d253ae1272917fc9f4a79459aacd53.svg"><br>
-                <br>
-                <center>Portuguese</center>
-            </div>
-        </button>
-        <button class="languages">
-            <div class="box">
-                <img src="https://d35aaqx5ub95lt.cloudfront.net/vendor/eadd7804652170c33814a89482f1f353.svg"><br>
-                <br>
-                <center>Russian</center>
-            </div>
-        </button>
-        <button class="languages">
-            <div class="box">
-                <img src="https://d35aaqx5ub95lt.cloudfront.net/vendor/de945d789e249dcd74333a6996472ef8.svg"><br>
-                <br>
-                <center>Dutch</center>
-            </div>
-        </button>
-        <button class="languages">
-            <div class="box">
-                <img src="https://d35aaqx5ub95lt.cloudfront.net/vendor/8db373482261397a3159d3f370eed2f3.svg"><br>
-                <br>
-                <center>greek</center>
-            </div>
-        </button>
-    </body>
-
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 </html>

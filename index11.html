@@ -1,108 +1,281 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spanish Ques</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style2.css"/>
-    <link rel="stylesheet" href="css/responsivee.css"/>
+    <title>German Quiz</title>
     <style>
         body {
-            background-image: url(https://i.pinimg.com/originals/33/de/d4/33ded4b1e7b3861e530494cecb456c25.gif);
-            background-repeat: no-repeat;
+            background-image: url('germanbackground1.webp');
+            margin: 0;
+            height: 100vh;
             background-size: cover;
-        }
-        .question {
-            text-align: center;
-            margin-top: 130px;
-            font-size: 25px;
-            font-family: Georgia, serif;
-        }
-        .answer-button {
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            background-color: rgb(127, 172, 255);
-            margin: 100px 100px 0 0;
-            padding: 60px 0;
-            border-radius: 6px;
-            cursor: pointer;
-            margin-left: 60px;
+            flex-direction: column;
         }
-        .continue-button {
-            border-radius: 10px;
-            background-color: rgb(255, 200, 0);
-            color: white;
-            font-family: bold;
-        }
-        .continue-button:hover {
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-        }
-        .result-message {
+
+        .container {
             text-align: center;
+        }
+
+        .card {
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            flex: 0 0 auto;
+            width: 16rem;
+            background-color: #fee9d6;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .question {
+            margin-bottom: 20px;
+            font-size: 30px;
+        }
+
+        .card img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .card-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        #score, #progress {
+            font-size: 24px;
             margin-top: 20px;
-            font-size: 20px;
-            font-weight: bold;
+        }
+
+        #progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #f3f3f3;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        #progress-bar-inner {
+            height: 100%;
+            background-color: #4CAF50;
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        #home-btn {
+            display: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #home-btn:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <nav style="margin-top: 80px;">
-        <progress value="50" max="100" style="margin-left: 650px; width: 250px;"></progress>
-    </nav>
-    
-    <p class="question">How do you pronounce <strong>'PLEASE'</strong> in spanish?</p>
-    
-    <div class="row">
-        <div class="col-lg-3">
-            <div class="answer-button" onclick="showResult('correct')">
-                <h5>MUY BIEN</h5>
-                <img src="https://media.istockphoto.com/id/1954623240/vector/folded-human-hands-praying-namaste-thank-you-helping-arm-gesture-vector-illustration-in-hand.jpg?s=612x612&w=0&k=20&c=9L-GznDeM72DGFf6dJOUpHelbe_x1w7Fj38A-VCoKZc=" style="height: 60px; width: 60px;">
-            </div>
-        </div>
-        <div class="col-lg-3">
-            <div class="answer-button" onclick="showResult('incorrect')">
-                <h5>LA COMIDA</h5>
-                <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTAyL3Jhd3BpeGVsX29mZmljZV8zMF9hX2RyYXdpbmdfb2ZfYV9idXJnZXJfaW5fdGhlX3N0eWxlX29mX2JvbGRfb181NWI2OWI5ZC02YjQ2LTRkZDctYWFlMy0wMDkzOTUwODc5ZDdfMS5wbmc.png" style="height: 90px; width: 90px;">
-            </div>
-        </div>
-        <div class="col-lg-3">
-            <div class="answer-button" onclick="showResult('incorrect')">
-                <h5>BUENOS DIAS</h5>
-                <img src="https://media.istockphoto.com/id/531242144/vector/sunrise-over-green-hills.jpg?s=612x612&w=0&k=20&c=6g3VwxwIqgU0RGZr0t1fRxdYxbzgYEA3hQmvQiAQwXY=" style="height: 80px; width: 80px;">
-            </div>
-        </div>
-        <div class="col-lg-3">
-            <div class="answer-button" onclick="showResult('incorrect')">
-                <h5>HOLA</h5>
-                <img src="https://media.istockphoto.com/id/1296242195/vector/waving-hand-cartoon-moving-human-hand-gesture-of-greeting-or-goodbye-negative-or.jpg?s=612x612&w=0&k=20&c=meOV3G73ftKbRaPxVTAuGVXeG7IToTBg3W4PcPxQDYg=" style="height: 80px; width: 80px;">
-            </div>
-        </div>
-    </div>
-    
-    <p class="result-message" id="resultMessage"></p>
+    <div class="container">
+        <!-- Question -->
+        <h3 class="question" id="question"></h3>
 
-    <a href="index10.html" style="margin-left: 50px">
-        <button class="continue-button">PREVIOUS</button>
-    </a>
-    <a href="index12.html" style="margin-left: 1400px">
-        <button class="continue-button">CONTINUE</button>
-    </a>
+        <!-- Horizontal Row of Cards -->
+        <div class="card-row" id="options"></div>
+
+        <!-- Progress Bar -->
+        <div id="progress">
+            Question: <span id="progress-text">0</span>/10
+            <div id="progress-bar">
+                <div id="progress-bar-inner"></div>
+            </div>
+        </div>
+
+        <!-- Score -->
+        <div id="score">Score: 0</div>
+
+        <!-- Home Button -->
+        <button id="home-btn" onclick="goHome()">Home</button>
+    </div>
 
     <script>
-        function showResult(result) {
-            const messageElement = document.getElementById('resultMessage');
-            if (result === 'correct') {
-                messageElement.textContent = 'Correct! MUY BIEN is the right answer.';
-                messageElement.style.color = 'green';
+          const questions = [
+            {
+                question: "Which picture shows a cat?",
+                options: [
+                    { text: "Ein Hund", image: "https://img.freepik.com/free-vector/cute-dog-cartoon-character-standing_1308-133833.jpg" },
+                    { text: "Ein Katze", image: "https://media.istockphoto.com/id/1097490360/vector/vector-illustration-of-cute-black-cat.jpg?s=612x612&w=0&k=20&c=Ef0qYl79aZJ6NJXJVbJ0onjXVNnSyqrN_TKPjieAIGE=" },
+                    { text: "Ein Vogel", image: "https://thumbs.dreamstime.com/b/illustration-blue-bird-cartoon-singing-30204548.jpg" }
+                ],
+                correct: "Ein Katze"
+            },
+            {
+                question: "What is the meaning of 'Ein'?",
+                options: [
+                    { text: "article 'A'", image: "https://as2.ftcdn.net/v2/jpg/02/09/70/41/1000_F_209704181_M6KX2j1O8uhGFWciIs54TERpDUbgyxcB.jpg" },
+                    { text: "article 'An'", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR55rvQG_VCogrXKfIqlrLCle1tmdpDRF31ESdz7BFPLkqA3RBZagPslIOUW953JE1g4X8&usqp=CAU" },
+                    { text: "article 'The'", image: "https://images2.minutemediacdn.com/image/upload/c_crop,w_5184,h_2916,x_0,y_208/c_fill,w_752,ar_16:9,f_auto,q_auto,g_auto/images/voltaxMediaLibrary/mmsport/mentalfloss/01gq5z39t51bh3mnswf9.jpg" }
+                ],
+                correct: "article 'A'"
+            },
+            {
+                question: " Hello in German? ",
+                options: [
+                    { text: "Tschüss", image: "https://img.freepik.com/premium-vector/bye-bye-cute-emoji-cartoon-character-yellow-backround_106878-540.jpg" },
+                    { text: "Guten Morgen", image: "https://t4.ftcdn.net/jpg/09/97/75/01/360_F_997750155_hG1zZt02aW6UQaZq7qIuLQYUjP6UsZcl.jpg"},
+                    { text: "Hallo", image: "https://img.freepik.com/premium-vector/lettering-hello_150234-151553.jpg" }
+            ],
+                correct: "Hallo"
+            },
+            {
+                question: " how are you? in German",
+                options: [
+                    { text: "wer bist du?", image:"https://quizizz.com/_media/quizzes/f1f92fee-1517-4311-8657-e86f920a945d-v2" },
+                    { text: "Wie geht es dir?", image:"https://mytutorsource.hk/assets/admin/blogimages/1652086197.A-guide-to-introducing-yourself-Responses-to-How-Are-You.png" },
+                    { text: "Wo bist du?", image:"https://media.tenor.com/M5_kSkKSi2cAAAAe/where-are-you.png"}
+                ],
+                correct: "Wie geht es dir?"
+            },
+
+            {
+                question: " Hallo , Wie geht es dir? means ",
+                options: [
+                    { text: "Hello, how are you?", image:"https://mytutorsource.hk/assets/admin/blogimages/1652086197.A-guide-to-introducing-yourself-Responses-to-How-Are-You.png" },
+                    { text: "Hey, Who are you?", image:"https://quizizz.com/_media/quizzes/f1f92fee-1517-4311-8657-e86f920a945d-v2" },
+                    { text: "Hi, Where are you?", image:"https://media.tenor.com/M5_kSkKSi2cAAAAe/where-are-you.png" }
+                ],
+                correct: "Hello, how are you?"
+            },
+            {
+                question: "Siblings in german?",
+                options: [
+                    { text: "Vater", image:"https://mpowerminds.com/assetOLD/images/how-does-a-father-play-an-important-role-in-a-child-life-as-a-woman.jpg" },
+                    { text: "Mutter", image:"https://cdn.pixabay.com/photo/2024/05/07/18/16/ai-generated-8746395_640.jpg" },
+                    { text: "Geschwister", image:"https://st.depositphotos.com/1007989/3946/i/450/depositphotos_39462835-stock-illustration-sibling-fight.jpg"}
+                ],
+                correct: "Geschwister"
+            },
+            {
+                question: " Book in German",
+                options: [
+                    { text: "Stuhl", image:"https://wakefitdev.gumlet.io/img/npl_modified_images/atticus/sofa_WLCHRATCFVBL/sofa_WLCHRATCFVBL_1.jpg?w=3840" },
+                    { text: "Buch", image:"https://media.newyorker.com/photos/59ee325f1685003c9c28c4ad/1:1/w_3744,h_3744,c_limit/Heller-Kirkus-Reviews.jpg" },
+                    { text: "Tisch", image:"https://woodsala.com/cdn/shop/files/2_ca01d685-edea-4f06-aedf-9f078bf38656.jpg?v=1693572171"}
+                ],
+                correct: "Buch"
+            },
+            {
+                question: "Bist du müde? in german means",
+                options: [
+                    { text: "Are you happy?", image:"https://i.scdn.co/image/ab6765630000ba8a6771f10c2fb2d24eb49c1542" },
+                    { text: "Are you angry?", image:"https://media.licdn.com/dms/image/C5612AQGwmEeAVRfCKA/article-cover_image-shrink_720_1280/0/1586057901977?e=2147483647&v=beta&t=PZSsXw2arOzqqghl2fQmXehcpC-1PxE2XDc_yuSEe5k" },
+                    { text: "Are you tired?", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPsD056Hi25moutdBwrXJux9UQ5FuDAHksDw&s"}
+                ],
+                correct: "Are you tired?"
+            },
+            {
+                question: "müde in german means?",
+                options: [
+                    { text: "Tired", image:"https://cdn.prod.website-files.com/619739b130344eef6175f587/637cc8325a282608dd9da8da_bad-day-stock-today-tease-170109.jpg" },
+                    { text: "Boring", image:"https://dictionaryblog.cambridge.org/wp-content/uploads/2019/09/boringwords_300x200.jpg" },
+                    { text: "Amazing", image:"https://t4.ftcdn.net/jpg/02/61/01/71/360_F_261017149_FZRKFO2USWdAc62U0VHZakyhfHRLKa8P.jpg"}
+                ],
+                correct: "Tired"
+            },
+            {
+                question: "Sleep in german?",
+                options: [
+                    { text: "Nacht", image:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Savault_Chapel_Under_Milky_Way_BLS.jpg/1200px-Savault_Chapel_Under_Milky_Way_BLS.jpg" },
+                    { text: "Schläfst", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvTOyPD_8tywPchckPRk4o5baV5cEqCZfT2Q&s" },
+                    { text: "Sonnenaufgang", image:"https://media.istockphoto.com/id/151694830/photo/sun-above-the-horizon.jpg?s=612x612&w=0&k=20&c=gU9Ki-_9cmJKgv3fAC3jvQtz6huI-4hxHsp9goTUH1U="}
+                ],
+                correct: "Schläfst"
+            },
+            
+
+            
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        const questionElement = document.getElementById("question");
+        const optionsElement = document.getElementById("options");
+        const scoreElement = document.getElementById("score");
+        const progressText = document.getElementById("progress-text");
+        const progressBarInner = document.getElementById("progress-bar-inner");
+        const homeBtn = document.getElementById("home-btn");
+
+        function updateProgressBar() {
+            const progressPercentage = ((currentQuestionIndex + 1) / questions.length) * 100;
+            progressBarInner.style.width = `${progressPercentage}%`;
+            progressText.textContent = currentQuestionIndex + 1;
+        }
+
+        function loadQuestion() {
+            const currentQuestion = questions[currentQuestionIndex];
+            questionElement.textContent = currentQuestion.question;
+
+            // Render options
+            optionsElement.innerHTML = "";
+            currentQuestion.options.forEach(option => {
+                const card = document.createElement("div");
+                card.className = "card";
+
+                card.innerHTML = `
+                    <div class="card-body text-center">
+                        ${option.image ? `<img src="${option.image}" alt="${option.text}">` : ""}
+                        <p class="card-text">${option.text}</p>
+                    </div>
+                `;
+                card.addEventListener("click", () => checkAnswer(option.text));
+                optionsElement.appendChild(card);
+            });
+
+            updateProgressBar();
+        }
+
+        function checkAnswer(selectedOption) {
+            const currentQuestion = questions[currentQuestionIndex];
+            if (selectedOption === currentQuestion.correct) {
+                score += 10;
+                scoreElement.textContent = `Score: ${score}`;
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
+                    loadQuestion();
+                } else {
+                    questionElement.textContent = "WELL DONE... You have completed the basics of German Language🎊👍";
+                    optionsElement.innerHTML = ""; // Clear options
+                    homeBtn.style.display = "inline-block"; // Show the home button
+                }
             } else {
-                messageElement.textContent = 'Incorrect. Try again!';
-                messageElement.style.color = 'red';
+                alert("Incorrect Answer. Let's Try Again.");
             }
         }
-    </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        function goHome() {
+            window.location.href = "index3.html"; // Change to your actual home page URL
+        }
+
+        // Initialize quiz
+        loadQuestion();
+    </script>
 </body>
 </html>
