@@ -42,7 +42,7 @@ function displayFlashcard() {
         flashcardContainer.style.display = "none";
         wellDoneMessage.style.display = "block";
         
-        // Change the button to "Home" and set the redirect URL
+        // Change the button to "Home" 
         nextQuestionButton.textContent = "Home"; // Change the button text to "Home"
         nextQuestionButton.onclick = function() {
             window.location.href = "index3.html"; // Redirect to the home page
@@ -60,5 +60,5 @@ document.getElementById("nextQuestionButton").addEventListener("click", () => {
     displayFlashcard();   // Display the next question
 });
 
-// Initial setup to display the first flashcard
+//  setup to display the first flashcard
 displayFlashcard();

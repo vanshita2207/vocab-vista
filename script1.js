@@ -79,3 +79,29 @@ document.getElementById("translateBtn").addEventListener("click", async () => {
         alert("An error occurred while translating. Please try again.");
     }
 });
+
+
+
+
+// text to speech
+// if (text.length > 50) {
+  //   if (synth.speaking && isSpeaking) {
+  //     button.innerText = "Pause";
+  //     synth.resume();
+  //     isSpeaking = false;
+  //   } else {
+  //     button.innerText = "Resume";
+  //     synth.pause();
+  //     isSpeaking = true;
+  //   }
+  // } else {
+  //   isSpeaking = false;
+  //   button.innerText = "Speaking";
+  // }
+
+  // setInterval(() => {
+  //   if (!synth.speaking && !isSpeaking) {
+  //     isSpeaking = true;
+  //     button.innerText = "Convert to Speech";
+  //   }
+  // });

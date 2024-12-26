@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
   <style>
-    /* Body styling for background */
+   
     body {
       font-family: 'Poppins', sans-serif;
       display: flex;
@@ -54,11 +54,10 @@
       transition: transform 0.6s;
       transform-style: preserve-3d;
       cursor: pointer;
-      z-index: 1; /* Ensures card is above background circles */
+      z-index: 1; 
     }
     .flashcard:hover { transform: rotateY(180deg); }
 
-    /* Card faces */
     .card-face {
       backface-visibility: hidden;
       transform-style: preserve-3d;
@@ -133,7 +132,7 @@ id="flashcard-container">
   <h3 id="question"></h3>
   <p id="answer"></p>
 </div>
-  <!-- <button id="nextQuestionButton">Next Question</button> -->
+  
   <p id="wellDoneMessage" style="display: none; font-size: 2rem;">Well Done! You've completed the flashcards!🎊</p>
 
 
